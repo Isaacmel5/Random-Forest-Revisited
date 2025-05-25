@@ -40,10 +40,12 @@ ANALISIS DEL DATASET: IMPORTANT
       cal mirar que el nom del target sigui identic al obtingut a : #Posibles targets print(ydata_full.head())
     - També tenir en compte que si no és multilabel cal fer ydata = ydata_full #Si nomes hi ha un target
     - Si és Myocardial Infarction (muiltilabel), executar la cela previa.
-    - El codi de Oversampling/undersampling NO s'ha d'executar, és per copiar al Main Test si es vol
+    - El codi de Oversampling/undersampling NO s'ha d'executar, és per copiar al Main Test si es vol.
+    
 MAIN TEST: 
     - Aqui es pot afagir el sampling si es vol, tenir en compte posar el nom de x_oversampled/undersampled en comptes de x_train i el mateix per y_train
-    - Utilitzar els valors donats abans per optimal_params per provar parametres raonables i amb sentit en: rf_custom = RandomForest(n_trees=25, max_depth=5, max_features=2)
+    - Utilitzar els valors donats abans per optimal_params per provar parametres raonables i amb sentit en: rf_custom = RandomForest(n_trees=25, max_depth=5, max_features=2).
+    
 ALTRES TEST:
     - Tenir en compte els comentaris de guia dins el codi
 

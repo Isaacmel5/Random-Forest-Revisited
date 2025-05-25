@@ -35,15 +35,11 @@ PER UNA PROVA RAPIDA USAR L'ARXIU: RFRtest.ipynb
 ---
 Es poden excutar fins a Functions sense tocar res, pero a DATASETS cal escollir un dels usats i executar aquest només.
 ANALISIS DEL DATASET: IMPORTANT
-    - En aquest punt cal tenir en compte que hi ha un dataset ( Myocardial Infarction Complications) que és       Multilabel. Per tant per aquest dataset cal seleccionar un target dels 12, "ZSN" és el target binari usat.
-    
+    - En aquest punt cal tenir en compte que hi ha un dataset ( Myocardial Infarction Complications) que és       Multilabel. Per tant per aquest dataset cal seleccionar un target dels 12, "ZSN" és el target binari usat.   
     - Quan es busca info. d'un target cal posar el nom exacte, per exemple a: print(ydata["class"].unique())         #Mirar posibles valors del target
       cal mirar que el nom del target sigui identic al obtingut a : #Posibles targets print(ydata_full.head())
-      
     - També tenir en compte que si no és multilabel cal fer ydata = ydata_full #Si nomes hi ha un target
-    
     - Si és Myocardial Infarction (muiltilabel), executar la cela previa.
-    
     - El codi de Oversampling/undersampling NO s'ha d'executar, és per copiar al Main Test si es vol
 MAIN TEST: 
     - Aqui es pot afagir el sampling si es vol, tenir en compte posar el nom de x_oversampled/undersampled en comptes de x_train i el mateix per y_train
@@ -58,7 +54,42 @@ Pots afegir aquest codi al MAIN TEST. Just despres dels imports i abans de : # S
 Xdata.replace(['?', -1, 'unknown', 'Unknown', ''], np.nan, inplace=True).
 
 Codi d'exemple per provar dades sintètiques:
-    
+
+```python
+from random import choices
+import numpy as np
+import pandas as pd
+
+# 1. Definir grandària
+n = 100
+
+# 2. Crear columnes numèriques enters i reals
+ints   = np.random.randint(0, 10, size=n)
+floats = np.random.randn(n) * 5 + 2
+
+# 3. Crear columna categòrica (dtype 'category')
+cats = pd.Categorical(choices(['A','B','C'], k=n))
+
+# 4. Crear columna de strings lliures
+strs = np.array(choices(['foo','bar','baz','qux'], k=n), dtype=object)
+
+# 5. Afegir NaN a l’atzar
+floats[np.random.choice(n, size=20, replace=False)] = np.nan
+strs[np.random.choice(n, size=10, replace=False)] = None
+
+# 6. Construeix el DataFrame
+X_synth = pd.DataFrame({
+    'enter': ints,
+    'real': floats,
+    'cat': cats,
+    'text': strs
+})
+
+# 7. Crea un target binari 
+y_synth = pd.Series(choices([0, 1], k=n), name='target')
+
+Xdata = X_synth
+ydata = y_synth
 from random import choices
 #1. Definir grandària
 n = 100

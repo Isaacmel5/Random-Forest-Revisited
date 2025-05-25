@@ -57,9 +57,6 @@ Codi d'exemple per provar dades sintètiques:
 
 ```python
 from random import choices
-import numpy as np
-import pandas as pd
-
 # 1. Definir grandària
 n = 100
 
@@ -75,7 +72,7 @@ strs = np.array(choices(['foo','bar','baz','qux'], k=n), dtype=object)
 
 # 5. Afegir NaN a l’atzar
 floats[np.random.choice(n, size=20, replace=False)] = np.nan
-strs[np.random.choice(n, size=10, replace=False)] = None
+strs  [np.random.choice(n, size=10, replace=False)] = None
 
 # 6. Construeix el DataFrame
 X_synth = pd.DataFrame({
@@ -90,34 +87,4 @@ y_synth = pd.Series(choices([0, 1], k=n), name='target')
 
 Xdata = X_synth
 ydata = y_synth
-from random import choices
-#1. Definir grandària
-n = 100
 
-#2. Crear columnes numèriques enters i reals
-ints   = np.random.randint(0, 10, size=n)
-floats = np.random.randn(n) * 5 + 2
-
-#3. Crear columna categòrica (dtype 'category')
-cats = pd.Categorical(choices(['A','B','C'], k=n))
-
-#4. Crear columna de strings lliures
-strs = np.array(choices(['foo','bar','baz','qux'], k=n), dtype=object)
-
-#5. Afegir NaN a l’atzar
-floats[np.random.choice(n, size=20, replace=False)] = np.nan
-strs  [np.random.choice(n, size=10, replace=False)] = None
-
-#6. Construeix el DataFrame
-X_synth = pd.DataFrame({
-    'enter': ints,
-    'real': floats,
-    'cat': cats,
-    'text': strs
-})
-
-#7. Crea un target binari 
-y_synth = pd.Series(choices([0, 1], k=n), name='target')
-
-Xdata = X_synth
-ydata = y_synth

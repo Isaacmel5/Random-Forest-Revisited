@@ -12,6 +12,7 @@ El repositori conté 2 arxius amb el mateix continut anomentas RandomForestRevis
 *** INSTALACIÓ ***
 ---
 Per executar el codi hi ha diverses opcions;
+
 A. Amb l'arxiu notebook (.ipynb, MILLOR OPCIÓ)
    1. Descarregar fitxer: Click als 3 punts, download
    2. Pujar fitxer a google drive o obrir-ho driectament en local si es disposa de Jupyter Lab o Jupyter Notebook
